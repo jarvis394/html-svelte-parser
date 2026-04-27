@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Renderer } from '$lib/index.js';
+	import type { PageProps } from './$types.js';
 
-	export let data;
+	const { data }: PageProps = $props();
 </script>
 
 <p>parse html and process nodes on the server.</p>

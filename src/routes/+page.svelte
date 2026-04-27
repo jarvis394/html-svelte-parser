@@ -34,7 +34,7 @@
 	};
 </script>
 
-<button on:click={changeHtml}>Change html</button>
+<button onclick={changeHtml}>Change html</button>
 
 <Html {html} {processNode} props={{ Test: { a: 'overwritten' } }} />
 

@@ -1,10 +1,13 @@
 import { expect, test } from '@playwright/experimental-ct-svelte';
 import type { Page } from '@playwright/test';
 import { expect as expectSSR, test as testSSR } from '@playwright/test';
-import Html from '../src/lib/Html.svelte';
+import HtmlComponent from '../src/lib/Html.svelte';
 import type { parse } from '../src/lib/parse.js';
 import { NodeType } from '../src/lib/types.js';
-import Test from './Test.svelte';
+import TestComponent from './Test.svelte';
+
+const Html = HtmlComponent as any;
+const Test = TestComponent as any;
 import { html, svg } from './data.js';
 
 const getHtml = async (page: Page) => (await page.locator('#root')).innerHTML();

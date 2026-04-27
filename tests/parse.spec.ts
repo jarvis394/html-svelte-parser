@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { isTag, isText } from 'domhandler';
-import type { ComponentType } from 'svelte';
+import type { Component } from 'svelte';
 import { parse } from '../src/lib/parse.js';
 import { NodeType } from '../src/lib/types.js';
 import { html, svg } from './data.js';
@@ -474,7 +474,7 @@ test('returns component names', () => {
 test.describe('processNode option', () => {
 	test('replaces the element if a svelte component is returned and removes the element if `false` is returned', () => {
 		// We can not import .svelte files here
-		const component = {} as unknown as ComponentType;
+		const component = {} as unknown as Component<any, any, any>;
 		expect(
 			parse(html.complex, {
 				processNode(node) {

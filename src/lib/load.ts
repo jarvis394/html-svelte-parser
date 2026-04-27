@@ -1,14 +1,12 @@
-import type { ComponentType } from 'svelte';
+import type { Component } from 'svelte';
 import type { Node } from './types.js';
 
 export const loadComponents = async <T extends string = string>(
 	{ nodes, components: componentNames }: { nodes: Node[]; components: T[] },
-	loader: (
-		componentName: T,
-	) => Promise<ComponentType | { default: ComponentType }>,
+	loader: (componentName: T) => Promise<Component<any, any, any> | { default: Component<any, any, any> }>,
 ) => {
-	const components: Record<T, ComponentType> = {} as Record<T, ComponentType>;
-	const promises: Promise<ComponentType>[] = [];
+	const components: Record<T, Component<any, any, any>> = {} as Record<T, Component<any, any, any>>;
+	const promises: Promise<Component<any, any, any>>[] = [];
 
 	for (const componentName of componentNames) {
 		promises.push(

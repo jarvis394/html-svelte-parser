@@ -10,7 +10,7 @@ import {
 } from 'domhandler';
 import { BROWSER } from 'esm-env';
 import htmlToDom from 'html-dom-parser';
-import type { ComponentType } from 'svelte';
+import type { Component } from 'svelte';
 import {
 	NodeType,
 	type ComponentNode,
@@ -26,7 +26,7 @@ const defaultOptions: Omit<Options, 'processNode'> = {
 	lowerCaseAttributeNames: false,
 };
 
-export const parse = <C extends ComponentType | string = string>(
+export const parse = <C extends Component<any, any, any> | string = string>(
 	html: string,
 	options: Options<C> = {},
 ) => {
@@ -51,7 +51,7 @@ const removeNode = (node: DomNode) => {
 		parent.children.splice(parent.children.indexOf(node as ChildNode), 1);
 };
 
-const transform = <C extends ComponentType | string = ComponentType | string>(
+const transform = <C extends Component<any, any, any> | string = Component<any, any, any> | string>(
 	html: string,
 	domNodes: DomNode[],
 	options: Options<C>,
@@ -203,7 +203,7 @@ const transformAndAddChildren = (
 	html: string,
 	node: TagNode | ComponentNode,
 	domNode: Element,
-	components: Set<ComponentType | string>,
+	components: Set<Component<any, any, any> | string>,
 	options: Options,
 ) => {
 	const { nodes: childNodes, components: childComponents } = transform(

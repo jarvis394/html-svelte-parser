@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Html from '../src/lib/Html.svelte';
-	import { parse } from '../src/lib/parse';
+	import { parse } from '../src/lib/parse.js';
 
 	export let noHtmlNodes = false;
 

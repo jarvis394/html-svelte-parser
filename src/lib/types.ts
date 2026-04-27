@@ -1,3 +1,4 @@
+import type { Component } from 'svelte';
 import type { DomSerializerOptions } from 'dom-serializer';
 import type {
 	DomHandlerOptions,
@@ -6,7 +7,6 @@ import type {
 	Text,
 } from 'domhandler';
 import type { ParserOptions } from 'htmlparser2';
-import type { ComponentType } from 'svelte';
 
 export enum NodeType {
 	Text,
@@ -22,9 +22,9 @@ export type Props = Record<string, any>;
 
 export type RendererProps = {
 	nodes: Node[];
-	props: Record<string, Props>;
-	components: Record<string, ComponentType>;
-	fallback?: ComponentType;
+	props?: Record<string, Props>;
+	components?: Record<string, Component<any, any, any>>;
+	fallback?: Component<any, any, any>;
 };
 
 export type TextNode = { type: NodeType.Text; data: string };
@@ -40,7 +40,7 @@ export type HtmlNode = { type: NodeType.Html; data: string };
 
 export type ComponentNode = {
 	type: NodeType.Component;
-	component: ComponentType | string;
+	component: Component<any, any, any> | string;
 	props?: Props;
 	children?: Node[];
 	rendererProps?: Record<string, Node[]>;
@@ -49,7 +49,7 @@ export type ComponentNode = {
 export type Node = TextNode | TagNode | HtmlNode | ComponentNode;
 
 export type ProcessNode<
-	C extends ComponentType | string = ComponentType | string,
+	C extends Component<any, any, any> | string = Component<any, any, any> | string,
 > = (node: Element | Text) =>
 	| {
 			component: C;
@@ -80,7 +80,7 @@ export type ProcessNode<
 	| false
 	| void;
 
-export type Options<C extends ComponentType | string = ComponentType | string> =
+export type Options<C extends Component<any, any, any> | string = Component<any, any, any> | string> =
 	ParserOptions &
 		Omit<DomHandlerOptions, 'withStartIndices' | 'withEndIndices'> &
 		DomSerializerOptions & {

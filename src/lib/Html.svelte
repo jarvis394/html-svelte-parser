@@ -1,34 +1,30 @@
-<svelte:options immutable />
-
 <script lang="ts">
-	import type { ComponentType } from 'svelte';
+	import type { Component } from 'svelte';
 	import Renderer from './Renderer.svelte';
 	import { parse } from './parse.js';
-	import type { Options, Props } from './types.js';
+	import type { Options, Props as ComponentProps } from './types.js';
 
-	interface $$Props extends Options {
+	interface Props extends Options {
 		/** The html string to parse */
 		html: string;
 
 		/** Object of components in the form of `{ componentName: component }` */
-		components?: Record<string, ComponentType>;
+		components?: Record<string, Component<any, any, any>>;
 
 		/** Object of component props in the form of `{ componentName: Props }` */
-		props?: Record<string, Props>;
+		props?: Record<string, ComponentProps>;
 
 		/** A fallback component */
-		fallback?: ComponentType;
+		fallback?: Component<any, any, any>;
 	}
 
-	export let html: string;
-	export let components: Record<string, ComponentType> = {};
-	export let props: Record<string, Props> = {};
-	export let fallback: ComponentType | undefined = undefined;
+	const {
+		html,
+		components = {},
+		props = {},
+		fallback,
+		...rest
+	}: Props = $props();
 </script>
 
-<Renderer
-	nodes={parse(html, $$restProps).nodes}
-	{components}
-	{props}
-	{fallback}
-/>
+<Renderer nodes={parse(html, rest).nodes} {components} {props} {fallback} />

@@ -1,9 +1,9 @@
-import type { ComponentType } from 'svelte';
+import type { Component } from 'svelte';
 import type { ComponentNode, Props } from './types.js';
 
 export const getComponent = (
 	node: ComponentNode,
-	components: Record<string, ComponentType>,
+	components: Record<string, Component<any, any, any>>,
 ) =>
 	typeof node.component === 'string'
 		? components[node.component]
@@ -12,8 +12,8 @@ export const getComponent = (
 export const getComponentProps = (
 	node: ComponentNode,
 	props: Record<string, Props>,
-	components: Record<string, ComponentType>,
-	fallback?: ComponentType,
+	components: Record<string, Component<any, any, any>>,
+	fallback?: Component<any, any, any>,
 ) => ({
 	...node.props,
 	...(typeof node.component === 'string' ? props[node.component] : {}),

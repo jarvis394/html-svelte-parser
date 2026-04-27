@@ -1,9 +1,10 @@
+import type { PageLoadEvent } from './$types.js';
 import { loadComponents } from '$lib/index.js';
 
 const loader = (component: string) =>
 	import(`./components/${component}.svelte`);
 
-export async function load({ data }) {
+export async function load({ data }: PageLoadEvent) {
 	const [withHtmlNodes, withoutHtmlNodes] = await Promise.all([
 		loadComponents(data.withHtmlNodes, loader),
 		loadComponents(data.withoutHtmlNodes, loader),

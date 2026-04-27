@@ -1,10 +1,11 @@
 import { parse } from '$lib/index.js';
 import { error } from '@sveltejs/kit';
 import { html, svg } from '../../../tests/data.js';
+import type { PageServerLoadEvent } from './$types.js';
 
 export const prerender = false;
 
-export function load({ url }) {
+export function load({ url }: PageServerLoadEvent) {
 	const key = url.searchParams.get('test');
 	if (!key) {
 		throw error(404);
