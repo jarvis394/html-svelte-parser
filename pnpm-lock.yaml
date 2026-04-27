@@ -78,6 +78,9 @@ importers:
       svelte-check:
         specifier: ^4.4.6
         version: 4.4.6(picomatch@4.0.4)(svelte@5.55.5)(typescript@5.3.3)
+      svelte-package:
+        specifier: ^0.1.0
+        version: 0.1.0(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5)(vite@5.0.11(@types/node@20.10.8)))(svelte@5.55.5)(typescript@5.3.3)(vite@5.0.11(@types/node@20.10.8)))
       tslib:
         specifier: ^2.4.1
         version: 2.6.2
@@ -686,6 +689,11 @@ packages:
     resolution: {integrity: sha512-lVJX6qEgs/4DOcRTpo56tmKzVPtoWAaVbL4hfO7t7NVwl9AAXzQR6cihesW1BmNMPl+bK6dreu2sOKBP2Q9CIA==}
     peerDependencies:
       acorn: ^8.9.0
+
+  '@sveltejs/adapter-static@2.0.3':
+    resolution: {integrity: sha512-VUqTfXsxYGugCpMqQv1U0LIdbR3S5nBkMMDmpjGVJyM6Q2jHVMFtdWJCkeHMySc6mZxJ+0eZK3T7IgmUCDrcUQ==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.5.0
 
   '@sveltejs/adapter-static@3.0.10':
     resolution: {integrity: sha512-7D9lYFWJmB7zxZyTE/qxjksvMqzMuYrrsyh1f4AlZqeZeACPRySjbC3aFiY55wb1tWUaKOQG9PVbm74JcN2Iew==}
@@ -1554,6 +1562,9 @@ packages:
       svelte:
         optional: true
 
+  svelte-package@0.1.0:
+    resolution: {integrity: sha512-Ckp5kQ63isOxns9ehfowmaTncLq86I5usDTtRqws/H7SAUZNfTg6l4T76oj3BinmaAE8ohz796/8bFxcUXXozA==}
+
   svelte2tsx@0.7.53:
     resolution: {integrity: sha512-ljVSwmnYRDHRm8+7ICP6QoAN7U7vgOFfPBLN6T745YWNYqRRSzHxlrzUVqMjYls2Un8MzJissfziy/38e6Deeg==}
     peerDependencies:
@@ -2095,6 +2106,10 @@ snapshots:
   '@sveltejs/acorn-typescript@1.0.9(acorn@8.16.0)':
     dependencies:
       acorn: 8.16.0
+
+  '@sveltejs/adapter-static@2.0.3(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5)(vite@5.0.11(@types/node@20.10.8)))(svelte@5.55.5)(typescript@5.3.3)(vite@5.0.11(@types/node@20.10.8)))':
+    dependencies:
+      '@sveltejs/kit': 2.58.0(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5)(vite@5.0.11(@types/node@20.10.8)))(svelte@5.55.5)(typescript@5.3.3)(vite@5.0.11(@types/node@20.10.8))
 
   '@sveltejs/adapter-static@3.0.10(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5)(vite@5.0.11(@types/node@20.10.8)))(svelte@5.55.5)(typescript@5.3.3)(vite@5.0.11(@types/node@20.10.8)))':
     dependencies:
@@ -3035,6 +3050,12 @@ snapshots:
       semver: 7.7.4
     optionalDependencies:
       svelte: 5.55.5
+
+  svelte-package@0.1.0(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5)(vite@5.0.11(@types/node@20.10.8)))(svelte@5.55.5)(typescript@5.3.3)(vite@5.0.11(@types/node@20.10.8))):
+    dependencies:
+      '@sveltejs/adapter-static': 2.0.3(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5)(vite@5.0.11(@types/node@20.10.8)))(svelte@5.55.5)(typescript@5.3.3)(vite@5.0.11(@types/node@20.10.8)))
+    transitivePeerDependencies:
+      - '@sveltejs/kit'
 
   svelte2tsx@0.7.53(svelte@5.55.5)(typescript@5.3.3):
     dependencies:
