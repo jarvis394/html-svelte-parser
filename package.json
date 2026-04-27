@@ -1,7 +1,7 @@
 {
 	"name": "@jarvis394/html-svelte-parser",
 	"description": "HTML to Svelte parser.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"
 	},
