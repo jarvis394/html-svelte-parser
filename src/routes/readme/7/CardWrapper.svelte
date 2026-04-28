@@ -2,13 +2,15 @@
 	import { Renderer, type RendererProps } from '$lib/index.js';
 	import Card from './Card.svelte';
 
-	export let title: RendererProps;
-	export let content: RendererProps;
-	export let actions: RendererProps;
+	const {
+		content,
+	}: {
+		title: RendererProps;
+		content: RendererProps;
+		actions: RendererProps;
+	} = $props();
 </script>
 
 <Card>
-	<Renderer slot="title" {...title} />
 	<Renderer {...content} />
-	<Renderer slot="actions" {...actions} />
 </Card>

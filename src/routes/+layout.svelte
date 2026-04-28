@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import GithubCorner from './GithubCorner.svelte';
+	import type { Snippet } from 'svelte';
+
+	let { children } = $props<{
+		children?: Snippet;
+	}>();
 </script>
 
 <GithubCorner href="https://github.com/PatrickG/html-svelte-parser" />
@@ -13,4 +18,4 @@
 	</ul>
 </nav>
 
-<main><slot /></main>
+<main>{@render children?.()}</main>

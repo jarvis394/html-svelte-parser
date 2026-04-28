@@ -4,7 +4,9 @@
 	import type { RendererProps } from './types.js';
 	import { NodeType } from './types.js';
 	import { getComponent, getComponentProps } from './utils.js';
-	import SvgRenderer from './SvgRenderer.svelte'
+	import SvgRenderer from './SvgRenderer.svelte';
+
+	export type { RendererProps as $$Props } from './types.js';
 
 	const { nodes, components = {}, props = {}, fallback }: RendererProps = $props();
 </script>{#each nodes as node}{#if node.type === NodeType.Text}{node.data}{:else if node.type === NodeType.Html}<g>{@html node.data}</g>{:else if node.type === NodeType.Tag}{#if node.children?.length}<svelte:element this={node.tag} {...node.attributes}><SvgRenderer nodes={node.children} {components} {props} {fallback} /></svelte:element>{:else}<svelte:element this={node.tag} {...node.attributes} />{/if}{:else if node.children?.length}{@const Component = getComponent(node, components) || fallback}<Component {...getComponentProps(node, props, components, fallback)}><SvgRenderer nodes={node.children} {components} {props} {fallback} /></Component>{:else}{@const Component = getComponent(node, components) || fallback}<Component {...getComponentProps(node, props, components, fallback)} />{/if}{/each}

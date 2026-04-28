@@ -1,7 +1,16 @@
 <script lang="ts">
 	import type { Attributes } from '$lib/types.js';
+	import type { Snippet } from 'svelte';
 
-	export let attributes: Attributes;
+	let {
+		attributes,
+		children,
+	}: {
+		attributes: Attributes;
+		children?: Snippet;
+	} = $props();
 </script>
 
-<span {...attributes}><slot /></span>
+<span {...attributes}>
+	{@render children?.()}
+</span>

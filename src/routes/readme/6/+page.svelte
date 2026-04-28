@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Renderer } from '$lib/index.js';
 
-	export let data;
+	const { data } = $props();
 </script>
 
 <Renderer {...data.content} />

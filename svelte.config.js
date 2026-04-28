@@ -12,6 +12,10 @@ const config = {
 		},
 	},
 
+	compilerOptions: {
+		runes: true
+	},
+
 	vitePlugin: { inspector: true },
 };
 

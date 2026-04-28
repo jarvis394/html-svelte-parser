@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import type { Snippet } from 'svelte';
+
+	let { children }: { children?: Snippet } = $props();
 </script>
 
 <h2>Readme examples</h2>
@@ -14,4 +17,4 @@
 	<li><a href="{base}/readme/7/">Example 7</a></li>
 </ul>
 
-<slot />
+{@render children?.()}

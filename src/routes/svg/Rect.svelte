@@ -1,5 +1,13 @@
 <script lang="ts">
-	export let attributes: Record<string, string>;
+	import type { Snippet } from 'svelte';
+
+	let {
+		attributes = {},
+		children,
+	}: {
+		attributes: Record<string, string>;
+		children?: Snippet;
+	} = $props();
 </script>
 
-<rect {...attributes}><slot /></rect>
+<rect {...attributes}>{@render children?.()}</rect>

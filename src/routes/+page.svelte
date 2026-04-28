@@ -3,13 +3,13 @@
 	import type { ProcessNode } from '$lib/types.js';
 	import Test from './components/Test.svelte';
 
-	let html = `<h1>Welcome to your library project</h1>
+	let html = $state(`<h1>Welcome to your library project</h1>
 <p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>`;
+<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>`);
 
 	const changeHtml = () =>
-		(html = `<h2>This text was changed!</h2>
-<p>Hello <a href="/">world</a></p>`);
+		html = `<h2>This text was changed!</h2>
+<p>Hello <a href="/">world</a></p>`;
 
 	const processNode: ProcessNode = node => {
 		if (!isTag(node)) {

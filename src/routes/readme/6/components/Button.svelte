@@ -1,12 +1,21 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
-	export let href: string | undefined = undefined;
-	export let type: HTMLButtonAttributes['type'] = 'button';
+	let {
+		href,
+		type,
+		children,
+		...rest
+	}: {
+		href?: string;
+		type?: HTMLButtonAttributes['type'];
+		children?: Snippet;
+	} & Record<string, any> = $props();
 </script>
 
 {#if href}
-	<a {...$$restProps} {href}><slot /></a>
+	<a {...rest} {href}>{@render children?.()}</a>
 {:else}
-	<button {...$$restProps} {type}><slot /></button>
+	<button {...rest} {type}>{@render children?.()}</button>
 {/if}

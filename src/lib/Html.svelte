@@ -4,7 +4,7 @@
 	import { parse } from './parse.js';
 	import type { Options, Props as ComponentProps } from './types.js';
 
-	interface Props extends Options {
+	export interface HtmlProps extends Options {
 		/** The html string to parse */
 		html: string;
 
@@ -18,13 +18,15 @@
 		fallback?: Component<any, any, any>;
 	}
 
+	export type $$Props = HtmlProps;
+
 	const {
 		html,
 		components = {},
 		props = {},
 		fallback,
 		...rest
-	}: Props = $props();
+	}: HtmlProps = $props();
 </script>
 
 <Renderer nodes={parse(html, rest).nodes} {components} {props} {fallback} />

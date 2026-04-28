@@ -1,7 +1,7 @@
 {
 	"name": "@jarvis394/html-svelte-parser",
 	"description": "HTML to Svelte parser.",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"license": "AGPL-3.0-only",
 	"author": {
 		"name": "Vladislav Ekushev",
